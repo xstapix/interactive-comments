@@ -1,0 +1,35 @@
+*{
+  margin: 0;padding: 0;
+  box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
+  font-size: 16px;
+}
+body{
+  background-color:  hsl(228, 33%, 97%);
+}
+.App{
+  margin: 40px auto;
+  width: 550px;
+  height: 850px;
+}
+.all-comments{
+  height: 700px;
+  overflow: scroll;
+}
+.all-comments::-webkit-scrollbar{
+  width: 0;
+}
+.new {
+  width: 550px;
+  position: fixed;
+  bottom: 40px;
+}
+
+@media only screen and (max-width: 428px) {
+  .App{
+    margin: 0 ;
+    padding: 24px;
+    width: 100%;
+    height: 100vh;
+  }
+}

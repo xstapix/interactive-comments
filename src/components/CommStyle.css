@@ -1,0 +1,153 @@
+section{
+  display: flex;
+  width: 100%;
+  padding: 18px;
+  margin-top: 15px;
+  background-color: white;
+  border-radius: 10px;
+}
+.likes{
+  width: 35px;
+  height: 80px;
+  padding: 5px 0;
+  margin-right: 15px;
+  border-radius: 7px;
+  background-color: hsl(228, 33%, 97%);
+}
+.likes_plus{
+  width: 100%;
+  height: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.likes_plus:hover svg path{
+  fill: hsl(238, 40%, 52%);
+}
+.likes_value{
+  display: flex;
+  justify-content: center;
+  margin: 17px 0;
+  color: hsl(238, 40%, 52%);
+  font-size: 14px;
+  font-weight: 500;
+}
+.comment_boby{
+  width: 100%;
+}
+.user{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user_info{
+  display: flex;
+  align-items: center;
+}
+.user_logo{
+  width: 26px;
+  height: 26px;
+  margin-right: 10px;
+}
+.user_name{
+  font-size: 13px;
+  font-weight: 500;
+  margin-right: 10px;
+}
+.you{
+  display: flex;justify-content: center;
+  align-items: center;
+  font-size: 11px;
+  margin-right: 10px;
+  width: 30px;
+  height: 17px;
+  background-color: hsl(238, 40%, 52%);
+  color: white;
+}
+.time{
+  font-size: 13px;
+  color: hsl(211, 10%, 45%);
+}
+.user_action{
+  display: flex;
+}
+.replies_body{
+  position: relative;
+  display: block;
+  margin-left: 60px;
+}
+.reply{
+  display: flex;
+  cursor: pointer;
+}
+.reply p{
+  margin-left: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: hsl(238, 40%, 52%);
+}
+.reply:hover svg path{
+  fill: hsl(239, 57%, 85%);
+}
+.reply:hover p {
+  color: hsl(239, 57%, 85%);
+}
+.comment_text{
+  font-size: 13px;
+  color: hsl(211, 10%, 45%);
+  margin-top: 15px;
+}
+.comment_text span{
+  font-size: 13px;
+  font-weight: 500;
+  color: hsl(238, 40%, 52%);
+}
+.delete{
+  display: flex;
+  cursor: pointer;
+  margin-right: 15px;
+}
+.delete p {
+  margin-left: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: hsl(358, 79%, 66%);
+}
+.delete:hover svg path{
+  fill: hsl(357, 100%, 86%);
+}
+.delete:hover p {
+  color: hsl(357, 100%, 86%);
+}
+.line{
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  margin: 0 -30px;
+  background-color: hsl(223, 19%, 93%);
+}
+@media only screen and (max-width: 428px) {
+  section{
+    display: block;
+  }
+  .likes{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90px;
+    height: 35px;
+    margin-top: 15px;
+  }
+  .likes_value{
+    margin: 0;
+  }
+  .replies_body{
+    position: relative;
+    display: block;
+    margin-left: 20px;
+  }
+  .line{
+    margin: 0 -15px;
+  }
+}
