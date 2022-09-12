@@ -32,7 +32,7 @@ const NewComment = ({
         content: content, 
         createdAt: "just now", 
         score: 0,
-        replyingTo: '',  
+        replyingTo: active,  
         user: {
           image: {
             png: currentUserInfo.image.png,
@@ -40,7 +40,7 @@ const NewComment = ({
           },
           username: currentUserInfo.username
         },
-      }, active.split(' '))
+      })
       setContent('')
       closeReply(false)
     }
@@ -49,19 +49,11 @@ const NewComment = ({
   return ( 
       <section className= {active ? 'new-comment_active': 'new-comment'}>
         <img src={currentUserInfo.image.png} alt="logo"/>
-        {/* {active === true ?  */}
-          <textarea 
-            className='new-comment_boby' 
-            placeholder='Add a comment...' 
-            value={content}
-            onChange={(event) => setContent(event.target.value)}/>
-            {/* :  */}
-        {/* <textarea 
-        //     className='new-comment_boby' 
-        //     placeholder='Add a comment...' 
-        //     defaultValue={'@' + active + ' '}
-        //     onChange={(event) => setContent(event.target.value)}/>
-        // } */}
+        <textarea 
+          className='new-comment_boby' 
+          placeholder='Add a comment...' 
+          value={content}
+          onChange={(event) => setContent(event.target.value)}/>
         <button className='comm_button' onClick={handleSend}>{action}</button>
       </section>
     

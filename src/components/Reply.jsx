@@ -2,11 +2,12 @@ import {useState} from 'react'
 
 import NewComment from './NewComment'
 
-const Reply = ({info, currentUserInfo}) => {
+const Reply = ({info, currentUserInfo, addReply, onRemoveReply, onUpdateReply}) => {
   const [likesReply, setLikesReply] = useState(info.score)
   const [replyTo, setReplyTo] = useState(false)
   const [deleteActive, setDeleteActive] = useState(false)
   const [edit, setEdit] = useState(false)
+  const [updateContent, setUpdateContent] = useState()
 
   const handleReplyTo = (event) => {
     replyTo ? setReplyTo(false) : setReplyTo(event.target.id)
@@ -18,6 +19,19 @@ const Reply = ({info, currentUserInfo}) => {
   
   const handleDeleate = (event) => {
     setDeleteActive(event.target.id)
+  }
+
+  const handleUpdate = (event) => {
+    if(updateContent) {
+      let newContent = updateContent.split(' ')
+      newContent.shift()
+      onUpdateReply({
+        id: event.target.id, 
+        content: newContent.join(' ')
+      })
+      setUpdateContent('')
+      setEdit(false)
+    }
   }
   
   return (
@@ -63,7 +77,8 @@ const Reply = ({info, currentUserInfo}) => {
             {edit ? 
               <textarea
                 className='new-comment_boby'
-                defaultValue={'@' + info.replyingTo + ' ' + info.content}/> 
+                defaultValue={'@' + info.replyingTo + ' ' + info.content}
+                onChange={(event) => setUpdateContent(event.target.value)}/> 
               : 
               <>
                 <span>@{info.replyingTo} </span>
@@ -72,7 +87,10 @@ const Reply = ({info, currentUserInfo}) => {
             }
           </div>
           {edit ? 
-            <button className='comm_button update-comm'>UPDATE</button> 
+            <button
+              id={info.id}
+              className='comm_button update-comm'
+              onClick={handleUpdate}>UPDATE</button> 
             :<></>
           }
         </div>
@@ -90,8 +108,28 @@ const Reply = ({info, currentUserInfo}) => {
       <NewComment 
         action={'REPLY'} 
         active={replyTo} 
+        addReply={addReply}
+        closeReply={
+          close => {setReplyTo(close)}
+        }
         currentUserInfo={currentUserInfo}
       />
+      <div 
+        className={deleteActive ? 'modal_delete' : 'modal_delete_none'} 
+        onClick={() => setDeleteActive(false)}>
+        <div className='delete_content' onClick={(event) => event.stopPropagation()}>
+          <p>Delete comment</p>
+          <span>Are you sure you want to delete this comment? This will remove the comment and can'tbe undone.</span>
+          <div className='button_body'> 
+            <button className='gray' onClick={() => setDeleteActive(false)}>NO, CANSEL</button>
+            <button 
+              className='red' 
+              onClick={() => {
+                onRemoveReply(deleteActive)
+                setDeleteActive(false)}}>YES, DELETE</button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -21,39 +21,22 @@ function App() {
     comments.map(item => {
       if(item.id == obj.id) item.content = obj.content
     })
-  }
-
-  const addReply = (obj, replyInfo) => {
-    const replyingName = replyInfo.shift()
-    const replyingId = replyInfo.pop()
-    obj.replyingTo = replyingName
-    
-    comments.map(item => {
-      if(item.id == replyingId) {
-        const newList = [
-          ...item.replies,
-          obj
-        ]
-        item.replies = newList
-      }
-    })
-  }
+  } 
 
   const onRemove = id => {
     const newlist = comments.filter(item => item.id != id)
     setComments(newlist)
   }
   
-  return (
+  return ( 
     <div className="App">
-      <div className='all-comments'>
+      <div className='all-comments'> 
       {comments.map(item => (
         <Comment 
           info={item} 
           key={item.id} 
           onRemove={onRemove}  
           onUpdate={updateComm}
-          addReply={addReply}
           currentUserInfo={currentUser}/>
       ))}
       </div>

@@ -127,7 +127,7 @@ section{
   margin: 0 -30px;
   background-color: hsl(223, 19%, 93%);
 }
-@media only screen and (max-width: 428px) {
+@media screen and (max-width: 428px) {
   section{
     display: block;
   }
