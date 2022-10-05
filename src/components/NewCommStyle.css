@@ -58,6 +58,7 @@ textarea::-webkit-scrollbar{
   }
   .new-comment_active{
     position: fixed;
+    bottom: 10px;
     width: 89%;
   }
 }
